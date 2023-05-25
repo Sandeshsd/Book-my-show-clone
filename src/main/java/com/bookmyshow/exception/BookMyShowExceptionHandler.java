@@ -11,9 +11,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+
+import com.bookmyshow.util.responseStructure;
 
 @RestControllerAdvice
 public class BookMyShowExceptionHandler extends ResponseEntityExceptionHandler {
@@ -29,5 +32,14 @@ public class BookMyShowExceptionHandler extends ResponseEntityExceptionHandler {
 			map.put(fieldName, message);
 		}
 		return new ResponseEntity<>(map, HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler
+	public ResponseEntity<responseStructure<String>> CustomerNotFoundById(CustomerNotFoundByIdException ex){
+		responseStructure<String> structure = new responseStructure<>();
+		structure.setStatusCode(HttpStatus.NOT_FOUND.value());
+		structure.setMessage(ex.getMessage());
+		structure.setData("Customer not found with the requested Id!!");
+		return new ResponseEntity<responseStructure<String>>(structure,HttpStatus.NOT_FOUND);
 	}
 }
