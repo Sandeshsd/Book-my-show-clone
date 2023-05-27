@@ -42,4 +42,12 @@ public class BookMyShowExceptionHandler extends ResponseEntityExceptionHandler {
 		structure.setData("Customer not found with the requested Id!!");
 		return new ResponseEntity<responseStructure<String>>(structure,HttpStatus.NOT_FOUND);
 	}
+   @ExceptionHandler
+   public ResponseEntity<responseStructure<String>> movieNotFoundById(MovieNotFoundByIdException ex){
+	   responseStructure<String> structure=new responseStructure<>();
+	   structure.setStatusCode(HttpStatus.NOT_FOUND.value());
+	   structure.setMessage(ex.getMessage());
+	   structure.setData("customer not found with the id");
+	   return new ResponseEntity<responseStructure<String>>(structure,HttpStatus.NOT_FOUND);
+   }
 }

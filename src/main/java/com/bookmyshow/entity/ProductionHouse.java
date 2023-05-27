@@ -3,7 +3,9 @@ package com.bookmyshow.entity;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,7 +26,7 @@ public class ProductionHouse {
 	private String productionName;
 	private LocalDateTime establismentTime;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "productionHouse",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	private List<Movie> movies;
 	
 	@ManyToOne
