@@ -1,10 +1,12 @@
 package com.bookmyshow.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -36,10 +38,10 @@ public class Customer {
 	@NotNull(message = "Customer cannot be null")
 	@Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$", message = "8 characters mandatory(1 upperCase,1 lowerCase,1 special Character,1 number)")
 	private String customerPassword;
-	@Min(600000001)
-	@Max(900000001)
+	@Min(6000000000l)
+	@Max(9999999999l)
 	private long customerPhoneNumber; 
 	
-	@ManyToOne
-	private Tickets tickets;
+	@OneToMany(mappedBy = "customer")
+	private List<Tickets> tickets;
 }

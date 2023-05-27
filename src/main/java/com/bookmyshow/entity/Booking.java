@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import com.bookmyshow.enums.BookingStatus;
 import com.bookmyshow.enums.SeatType;
@@ -27,4 +28,7 @@ public class Booking {
 	private SeatType seatType;
 	private BookingStatus bookingStatus;
 	private double seatPrice;
+	
+	@ManyToOne
+	private Tickets tickets;
 }

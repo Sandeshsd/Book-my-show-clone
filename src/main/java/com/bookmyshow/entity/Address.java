@@ -36,6 +36,6 @@ public class Address {
 	@Pattern(regexp = "[A-Z]{1}[a-zA-Z\\s]*", message = "Name should Start with capital letter")
 	private String country;
 	
-	@OneToOne
+	@OneToOne(mappedBy = "address")
 	private Theatre theatre;
 }

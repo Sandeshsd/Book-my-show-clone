@@ -9,8 +9,12 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -23,6 +27,9 @@ public class ProductionHouse {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long productionId;
+	@NotBlank(message = "ProductionName cannot be blank")
+	@NotNull(message = "ProductionName cannot be null")
+	@Pattern(regexp = "[A-Z]{1}[a-zA-Z\\s]*", message = "Name should Start with capital letter")
 	private String productionName;
 	private LocalDateTime establismentTime;
 	
@@ -30,6 +37,7 @@ public class ProductionHouse {
 	private List<Movie> movies;
 	
 	@ManyToOne
+	@JoinColumn
 	private Owner owner;
 	
 }

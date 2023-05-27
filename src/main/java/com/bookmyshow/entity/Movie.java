@@ -14,6 +14,8 @@ import javax.validation.constraints.Pattern;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.bookmyshow.enums.Genre;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -30,7 +32,9 @@ public class Movie {
 	private String movieName;
 	@DateTimeFormat(style = "hh:mm")
 	private LocalDateTime movieDuration;
-	
+	private Genre genre1;
+	private Genre genre2;
+	private Genre genre3;
 	private String movieDescription;
 	@NotBlank(message = "Movie cannot be blank")
 	@NotNull(message = "Movie cannot be null")
