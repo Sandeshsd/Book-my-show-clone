@@ -58,4 +58,12 @@ public class BookMyShowExceptionHandler extends ResponseEntityExceptionHandler {
 	   structure.setData("owner not found with the id");
 	   return new ResponseEntity<responseStructure<String>>(structure,HttpStatus.NOT_FOUND);
    }
+ 
+   public ResponseEntity<responseStructure<String>> productionHouseNotFoundById(ProductionHouseNotFoundByIdException e){
+	   responseStructure<String> responseStructure=new responseStructure<>();
+	   responseStructure.setStatusCode(HttpStatus.NOT_FOUND.value());
+	   responseStructure.setMessage(e.getMessage());
+	   responseStructure.setData("production house not found");
+	   return new ResponseEntity<responseStructure<String>>(responseStructure,HttpStatus.NOT_FOUND);
+   }
 }

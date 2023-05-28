@@ -31,8 +31,8 @@ public class OwnerService {
 		responseStructure.setData(dto);
 		return new ResponseEntity<responseStructure<OwnerDTO>>(responseStructure,HttpStatus.CREATED);
 	}
-	public ResponseEntity<responseStructure<OwnerDTO>> getOwnerById(Owner owner,long ownerId){
-		owner=ownerDAO.getOwnerById(ownerId);
+	public ResponseEntity<responseStructure<OwnerDTO>> getOwnerById(long ownerId){
+	Owner owner=ownerDAO.getOwnerById(ownerId);
 		if(owner!=null) {
 			OwnerDTO dto=this.modelMapper.map(owner, OwnerDTO.class);
 			responseStructure<OwnerDTO> responseStructure=new responseStructure<>();

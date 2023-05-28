@@ -28,7 +28,7 @@ public class OwnerController {
 		return ownerService.saveOwner(owner);
 	}
 	@GetMapping
-	public ResponseEntity<responseStructure<OwnerDTO>> getownerById(@RequestBody Owner owner,@RequestParam long ownerId){
-		return ownerService.getOwnerById(owner, ownerId);
+	public ResponseEntity<responseStructure<OwnerDTO>> getownerById(@RequestParam long ownerId){
+		return ownerService.getOwnerById(ownerId);
 	}
 }

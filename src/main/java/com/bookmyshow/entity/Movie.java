@@ -15,6 +15,7 @@ import javax.validation.constraints.Pattern;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.bookmyshow.enums.Genre;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -44,5 +45,6 @@ public class Movie {
 	
 	@ManyToOne
 	@JoinColumn
+	@JsonIgnore
 	private ProductionHouse productionHouse;
 }

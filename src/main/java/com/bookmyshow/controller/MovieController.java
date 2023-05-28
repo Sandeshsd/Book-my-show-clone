@@ -24,8 +24,8 @@ public class MovieController {
 	private MovieService movieService;
 	
 	@PostMapping
-	public ResponseEntity<responseStructure<Movie>> saveMovie(@Valid @RequestBody Movie movie){
-		return movieService.saveMovie(movie);
+	public ResponseEntity<responseStructure<Movie>> saveMovie(@Valid @RequestBody Movie movie, @RequestParam long productionId){
+		return movieService.saveMovie(movie, productionId);
 	}
 	@GetMapping
 	public ResponseEntity<responseStructure<Movie>> getMovieById(@RequestParam long movieId){
